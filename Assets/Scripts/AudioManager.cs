@@ -28,11 +28,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //PlayMusicaFondo();
-    }
-
     // Reproducir música de fondo
     public void PlayMusicaFondo()
     {

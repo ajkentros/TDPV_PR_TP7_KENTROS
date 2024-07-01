@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
             // Verifica el estado del juego 
             VerificaEstadoJuego();
         }
-        
+
+        VerificaEscape();
     }
 
     // Gestiona el inicio de las variables
@@ -122,6 +123,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void VerificaEscape()
+    {
+        // Verificar si la tecla Escape es presionada
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (juegoPausado)
+            {
+                juegoPausado = false;
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                PausarJuego();
+                
+            }
+        }
+    }
     // Gestiona la pausa del jeugo
     public void PausarJuego()
     {
@@ -153,24 +171,12 @@ public class GameManager : MonoBehaviour
     }
 
     // Gestiona el reinicio del nivel cuando 
-    public void ReiniciaNivel()
+    public void ContinuaNivel()
     {
-        // Carga la misma escena y la repite
-        nivel = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(nivel);
-       
-        // Reestablece los puntos - items - rebotes
-        totalPuntos -= puntos;
-        puntos = 0;
-
-        totalItems -= items;
-        items = 0;
-
-        totalRebotes -= rebotes;
-        rebotes = 0;
-
         // Asegura que el tiempo se reanuda al reiniciar el nivel
         Time.timeScale = 1f;
+
+        juegoPausado = false;
         
         //Debug.Log("Nivel reiniciado, Time.timeScale establecido a 1");
     }

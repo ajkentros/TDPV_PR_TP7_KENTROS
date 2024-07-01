@@ -73,7 +73,7 @@ public class ControladorUI : MonoBehaviour
             else
             {
                 // Cambia el título de menú
-                textoMensaje.text = "PERDISTE NIVEL";
+                textoMensaje.text = "JUEGO PAUSADO";
             }
 
         }
@@ -114,7 +114,7 @@ public class ControladorUI : MonoBehaviour
         else
         {
             // Se reinicia el nivel
-            GameManager.gameManager.ReiniciaNivel();
+            GameManager.gameManager.ContinuaNivel();
         }
 
     }
